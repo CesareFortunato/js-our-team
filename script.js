@@ -44,7 +44,7 @@ const outputContainer = document.getElementById("cards-container");
 
 let outputCards = "";
 
-// form variable
+// form variables
 
 const form = document.getElementById("create-member-form");
 const nameField = document.getElementById("name-field");
@@ -93,14 +93,18 @@ function createCards(memberObj) {
 
 function populateWithCards(arrRef, outputElement) {
 
+  // reset output cards 
+
   outputCards = "";
+
+  // for cicle to add to outputCards every card inside the given array
 
   for (let index = 0; index < arrRef.length; index++) {
     const memberTeam = arrRef[index]
 
     outputCards += createCards(memberTeam);
 
-    // put every card inside the outputContainer <div>
+    // put every card inside the outputElement <div>
 
     outputElement.innerHTML = outputCards;
 
