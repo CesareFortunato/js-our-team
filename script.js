@@ -38,32 +38,53 @@ const teamMembers = [
 ];
 
 
-// setup variables
-
-
+// setup variables to populate with cards
 
 const outputContainer = document.getElementById("cards-container");
 
 let outputCards = "";
 
+// form variables
+
+const form = document.getElementById("create-member-form");
+const name = document.getElementById("name-field");
+const email = document.getElementById("email-field");
+const role = document.getElementById("role-field");
+const img = document.getElementById("img-field");
+
+
+
+
+// SYSTEM
+
+
 populateCards()
 
+
+
+// FUNCTION
 
 function populateCards(){
 
 for (let index = 0; index < teamMembers.length; index++) {
   const memberTeam = teamMembers[index];
 
+  // destructuring obj memberTeam
+
+  const {name, img, role  } = memberTeam;
+
+  // create a <div> structure for every obj in teamMembers array
+
   outputCards += `<div class="card mb-3 col-4" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${memberTeam.img}" class="img-fluid rounded-start" alt="...">
+                        <img src="${img}" class="img-fluid rounded-start" alt="${name}">
                     </div>
                     <div class="col-md-8 card-text-container">
                         <div class="card-body">
-                            <h5 class="card-title">${memberTeam.name}</h5>
-                            <p class="card-text">${memberTeam.role}</p>
-                            <a href="" class="mail-text">${memberTeam.email}</a>
+                            <h5 class="card-title">${name}</h5>
+                            <p class="card-text">${role}</p>
+                            <a href="" class="mail-text">${email}</a>
                         </div>
                     </div>
                 </div>
@@ -71,5 +92,12 @@ for (let index = 0; index < teamMembers.length; index++) {
 
 }
 
+// put every card inside the outputContainer <div>
+
 outputContainer.innerHTML = outputCards;
+}
+
+
+function newMember() {
+  
 }
