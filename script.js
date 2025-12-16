@@ -92,6 +92,9 @@ function createCards(memberObj) {
 
 
 function populateWithCards(arrRef, outputElement) {
+
+  outputCards = "";
+
   for (let index = 0; index < arrRef.length; index++) {
     const memberTeam = arrRef[index]
 
@@ -126,6 +129,12 @@ function newMember(event) {
     email,
     img,
   }
+
+  // move the new member inside the teamMemebers array
+
+  teamMembers.push(addedMember);
+
+  populateWithCards(teamMembers, outputContainer);
 
 }
 
