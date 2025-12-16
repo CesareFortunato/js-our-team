@@ -57,19 +57,14 @@ const img = document.getElementById("img-field");
 
 // SYSTEM
 
-for (let index = 0; index < teamMembers.length; index++) {
-  const memberTeam = teamMembers[index]
-
-  outputCards += populateCards(memberTeam);
-
-}
+populateWithCards()
 
 
 
 
 // FUNCTION
 
-function populateCards(memberObj){
+function createCards(memberObj){
 
   // create a <div> structure for every obj in teamMembers array
 
@@ -92,9 +87,20 @@ function populateCards(memberObj){
 
 }
 
-// put every card inside the outputContainer <div>
 
-outputContainer.innerHTML = outputCards;
+function populateWithCards() {
+  for (let index = 0; index < teamMembers.length; index++) {
+  const memberTeam = teamMembers[index]
+
+  outputCards += createCards(memberTeam);
+
+  // put every card inside the outputContainer <div>
+
+  outputContainer.innerHTML = outputCards;
+
+}
+}
+
 
 
 
