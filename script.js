@@ -44,29 +44,32 @@ const outputContainer = document.getElementById("cards-container");
 
 let outputCards = "";
 
-// form variables
+// form variable
 
 const form = document.getElementById("create-member-form");
-const name = document.getElementById("name-field");
-const email = document.getElementById("email-field");
-const role = document.getElementById("role-field");
-const img = document.getElementById("img-field");
+const nameField = document.getElementById("name-field");
+const emailField = document.getElementById("email-field");
+const roleField = document.getElementById("role-field");
+const imgField = document.getElementById("img-field");
+
 
 
 
 
 // SYSTEM
 
-populateWithCards()
+populateWithCards(teamMembers, outputContainer);
+
+form.addEventListener("submit", newMember);
 
 
 
 
 // FUNCTION
 
-function createCards(memberObj){
+function createCards(memberObj) {
 
-  // create a <div> structure for every obj in teamMembers array
+  // create a <div> structure for every obj in teamMembers array 
 
   const card = `<div class="card mb-3 col-4" style="max-width: 540px;">
                 <div class="row g-0">
@@ -83,24 +86,48 @@ function createCards(memberObj){
                 </div>
             </div>`
 
-            return card
+  return card
 
 }
 
 
-function populateWithCards() {
-  for (let index = 0; index < teamMembers.length; index++) {
-  const memberTeam = teamMembers[index]
+function populateWithCards(arrRef, outputElement) {
+  for (let index = 0; index < arrRef.length; index++) {
+    const memberTeam = arrRef[index]
 
-  outputCards += createCards(memberTeam);
+    outputCards += createCards(memberTeam);
 
-  // put every card inside the outputContainer <div>
+    // put every card inside the outputContainer <div>
 
-  outputContainer.innerHTML = outputCards;
+    outputElement.innerHTML = outputCards;
+
+  }
+}
+
+
+function newMember(event) {
+
+  // prevent form behaviour
+
+  event.preventDefault();
+
+  // input fields variables
+
+  const name = nameField.value;
+  const email = emailField.value;
+  const role = roleField.value;
+  const img = imgField.value;
+
+  // new obj 
+
+  const addedMember = {
+    name,
+    role,
+    email,
+    img,
+  }
 
 }
-}
-
 
 
 
